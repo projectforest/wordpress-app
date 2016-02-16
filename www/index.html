@@ -20,8 +20,8 @@
       <ion-content>
         <ion-list>
           <ion-item ng-repeat="b in blogs">
-            <img ng-src="{{b.avatar_URL}}" alt="">
-            <h2>{{b.title}}</h2>
+            <img ng-src="{{b.avatar_URL}}" class="thumbnail">
+            <h2 ng-bind-html="b.title"></h2>
             <p>{{b.name}}</p>
           </ion-item>
         </ion-list>
