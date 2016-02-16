@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang-"en" ng-app="FPApp">
+  <head>
+    <meta charset="UTF-8">
+    <title>WordPress</title>
+
+    <!-- Ionic -->
+    <link rel="stylesheet" href="lib/ionic/css/ionic.css">
+    <script src="lib/ionic/js/ionic.bundle.js"></script>
+
+    <!-- setup app -->
+    <link rel="stylesheet" href="index.css">
+    <script src="index.js"></script>
+  </head>
+  <body ng-controller="FPCtrl">
+    <ion-pane>
+      <ion-header-bar class="bar-dark">
+        <h1 class="title">WordPress</h1>
+      </ion-header-bar>
+      <ion-content>
+        <ion-list>
+          <ion-item ng-repeat="b in blogs">
+            <img ng-src="{{b.avatar_URL}}" alt="">
+            <h2>{{b.title}}</h2>
+            <p>{{b.name}}</p>
+          </ion-item>
+        </ion-list>
+      </ion-content>
+    </ion-pane>
+  </body>
+</html>
