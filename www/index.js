@@ -25,10 +25,20 @@ function FPCtrl($scope, $sce, $ionicLoading, FPSvc){
     });
 
     $scope.params.before = result.date_range.oldest;
+    $scope.$broadcast("scroll.infiniteScrollComplete");
+    $scope.$broadcast("scroll.refreshComplete");
     $ionicLoading.hide();
   });
 
-  FPSvc.loadBlogs($scope.params);
+  $scope.loadMore = function(){
+    FPSvc.loadBlogs($scope.params);
+  }
+  $scope.reload = function(){
+    $scope.blogs = [];
+    $scope.params = {};
+    FPSvc.loadBlogs();
+  }
+  
 }
 
 function FPSvc($http, $rootScope) {
