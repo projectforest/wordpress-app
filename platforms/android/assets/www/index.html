@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang-"en" ng-app="FPApp">
+  <head>
+    <meta charset="UTF-8">
+    <title>WordPress</title>
+
+    <!-- setup ionic/cordova -->
+    <script src="cordova.js"></script>
+    <meta http-equiv="Content-Security-Policy" content="default-src *;">
+
+    <!-- Ionic -->
+    <link rel="stylesheet" href="lib/ionic/css/ionic.css">
+    <script src="lib/ionic/js/ionic.bundle.js"></script>
+
+    <!-- setup app -->
+    <link rel="stylesheet" href="index.css">
+    <script src="index.js"></script>
+  </head>
+  <body ng-controller="FPCtrl" class="platform-android platform-cordova platform-webview">
+    <ion-pane>
+      <ion-header-bar class="bar-dark">
+        <h1 class="title"> WordPress App ({{blogs.length}})</h1>
+      </ion-header-bar>
+      <ion-content>
+        <ion-refresher pulling-text="Reload blogs" on-refresh="reload()"></ion-refresher>
+          <ion-list>
+            <ion-item ng-repeat="b in blogs" ng-click="show($index)">
+              <img ng-src="{{b.avatar_URL}}" class="thumbnail">
+              <h2 ng-bind-html="b.title"></h2>
+              <p>{{b.name}}</p>
+              <ion-option-button class="button-positive" ng-click="share($index)">Share</ion-option-button>
+            </ion-item>
+          </ion-list>
+          <ion-infinite-scroll on-infinite="loadMore()"></ion-infinite-scroll>
+      </ion-content>
+    </ion-pane>
+  </body>
+</html>
